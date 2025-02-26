@@ -6,7 +6,7 @@ import logo from '../img/im.png';
 
 const Header = ({ theme, setTheme, unreadCount = 0, toggleNotifications }) => {
     return (
-        <header className="py-3 px-4 bg-white shadow-md dark:bg-gray-800 transition-colors duration-200">
+        <header className="py-3 px-4 shadow-md bg-gray-800 transition-colors duration-200">
             <div className="flex items-center justify-between">
                 {/* Logo and Brand */}
                 <div className="flex items-center space-x-3">
