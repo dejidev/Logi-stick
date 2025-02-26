@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Bell, Sun, Moon, BarChart, PieChart } from 'lucide-react';
 import { Pie } from 'react-chartjs-2'; // For pie chart
 import { Bar } from 'react-chartjs-2'; // For bar chart
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
@@ -7,8 +6,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, BarElement, CategoryScal
 // Registering necessary chart elements
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-const Analytics = ({ shipments }) => {
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+const Analytics = ({ shipments , theme}) => {
 
     const shipmentStatuses = shipments.reduce(
         (acc, shipment) => {
@@ -26,8 +24,8 @@ const Analytics = ({ shipments }) => {
             {
                 label: 'Shipment Status Breakdown',
                 data: [shipmentStatuses.delivered, shipmentStatuses.inTransit, shipmentStatuses.pending],
-                backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
-                borderColor: ['#4caf50', '#ff9800', '#f44336'],
+                backgroundColor: ['#FF6F61', '#4D9DE0', '#FFB75D'], // Red, Blue, and Golden Yellow
+                borderColor: ['#FF6F61', '#4D9DE0', '#FFB75D'],
                 borderWidth: 1,
             },
         ],
@@ -39,8 +37,8 @@ const Analytics = ({ shipments }) => {
             {
                 label: 'Shipment Status Breakdown',
                 data: [shipmentStatuses.delivered, shipmentStatuses.inTransit, shipmentStatuses.pending],
-                backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
-                borderColor: ['#4caf50', '#ff9800', '#f44336'],
+                backgroundColor: ['#FF6F61', '#4D9DE0', '#FFB75D'], // Red, Blue, and Golden Yellow
+                borderColor: ['#FF6F61', '#4D9DE0', '#FFB75D'],
                 borderWidth: 1,
             },
         ],
@@ -57,24 +55,22 @@ const Analytics = ({ shipments }) => {
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-            <h3 className="text-lg font-semibold mb-4 text-gray-300">Analytics Overview</h3>
+        <div className={`rounded-lg shadow-lg p-4 ${theme === 'dark' ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-800'}`}>
+            <h3 className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-800'}`}>Analytics Overview</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-2">
                 {/* Bar Chart */}
-                <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-lg flex flex-col items-center justify-center px-4 py-8">
+                <div className={`h-64 ${theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-gray-800'} rounded-lg flex flex-col items-center justify-center px-4 py-8`}>
                     <Bar data={barData} options={options} />
-                    <p className="mt-2 text-gray-500">Shipment Analytics</p>
+                    <p className={`mt-2 ${theme === 'dark' ? 'text-gray-500' : 'text-gray-600'}`}>Shipment Analytics</p>
                 </div>
 
                 {/* Pie Chart */}
-                <div className="h-64 bg-gray-100 dark:bg-gray-700 rounded-lg flex flex-col items-center justify-center px-4 py-8">
+                <div className={`h-64 ${theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-gray-800'} rounded-lg flex flex-col items-center justify-center px-4 py-8`}>
                     <Pie data={pieData} options={options} />
-                    <p className="mt-2 text-center text-gray-500">Shipment Status</p>
+                    <p className={`mt-2 text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-600'}`}>Shipment Status</p>
                 </div>
             </div>
-
-
         </div>
     );
 };

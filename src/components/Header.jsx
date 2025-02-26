@@ -1,61 +1,34 @@
 
-// // Header.js
-
-// import React, { useState, useEffect } from 'react';
-// import { Bell, Sun, Moon, Package, Truck, AlertCircle, Map, BarChart } from 'lucide-react';
-
-// const Header = ({ theme, setTheme }) => (
-//     <header className={`p-4 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg`}>
-//         <div className="max-w-7xl mx-auto flex justify-between items-center">
-//             <h1 className="text-2xl font-bold">Logistics Dashboard</h1>
-//             <div className="flex items-center gap-4">
-//                 <button
-//                     onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-//                     className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-//                 >
-//                     {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-//                 </button>
-//                 <button className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-//                     <Bell size={20} />
-//                 </button>
-//             </div>
-//         </div>
-//     </header>
-// );
-
-
-// export default Header
-
-
-
-
-
-
-
-
 // Header.js
 import React from 'react';
-import { Bell, Sun, Moon, Search, Menu, User } from 'lucide-react';
-import logo from '../img/im.png'
+import { Bell, Sun, Moon, Search, User } from 'lucide-react';
+import logo from '../img/im.png';
 
 const Header = ({ theme, setTheme, unreadCount = 0, toggleNotifications }) => {
     return (
         <header className="py-3 px-4 bg-white shadow-md dark:bg-gray-800 transition-colors duration-200">
             <div className="flex items-center justify-between">
                 {/* Logo and Brand */}
-                <div className="flex items-center space-x-4">
-                    <div className="lg:hidden">
-                        <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                            <Menu size={20} className="text-gray-700 dark:text-gray-200" />
-                        </button>
+                <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 md:h-15 md:w-15 flex items-center justify-center">
+                        <img
+                            src={logo}
+                            alt="Logi-Stick Logo"
+                            className={`w-full h-full object-contain ${theme === 'dark' ? 'brightness-150' : ''}`}
+                        />
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <div className="h-8 w-8 md:h-16 md:w-16 flex items-center justify-center">
-  
-                            <img src={logo} alt="logo" className=" filter grayscale" />
-                        </div>
- 
-                        <h1 className="text-xl font-bold text-gray-800 dark:text-white hidden sm:block">Logi-Stick Dashboard</h1>
+                    <div>
+                        {/* <h1 className="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300 font-sans tracking-tight">
+                            Logi-Stick
+                        </h1> */}
+                        <h1 className="text-xl sm:text-2xl
+                         md:text-4xl font-extrabold bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 bg-clip-text text-transparent dark:from-indigo-400 dark:via-blue-300 dark:to-purple-400 font-sans tracking-tight drop-shadow-xl">
+                            Logi-Stick
+                        </h1>
+
+                        <p className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">
+                            Shipment Dashboard
+                        </p>
                     </div>
                 </div>
 
@@ -89,7 +62,7 @@ const Header = ({ theme, setTheme, unreadCount = 0, toggleNotifications }) => {
                     >
                         {theme === 'light' ?
                             <Moon size={20} className="text-gray-100" /> :
-                            <Sun size={20} className="text-gray-200" />
+                            <Sun size={20} className="text-gray-100" />
                         }
                     </button>
 
@@ -106,7 +79,7 @@ const Header = ({ theme, setTheme, unreadCount = 0, toggleNotifications }) => {
                         )}
                     </button>
 
-                    <div className="h-8 w-8 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center border border-gray-300 dark:border-gray-600">
+                    <div className="h-8 w-8 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center border border-gray-300 dark:border-gray-600 dark:bg-gray-700">
                         <User size={16} className="text-gray-600 dark:text-gray-400" />
                     </div>
                 </div>
