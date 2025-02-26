@@ -426,18 +426,18 @@ const MOCK_SHIPMENTS = [
   {
     id: 'SHP001',
     status: 'In Transit',
-    origin: 'New York',
-    destination: 'Los Angeles',
-    currentLocation: 'Chicago',
+    origin: 'Lagos',
+    destination: 'Abuja',
+    currentLocation: 'Kano',
     estimatedDelivery: '2025-02-24',
     priority: 'High'
   },
   {
     id: 'SHP002',
     status: 'Delivered',
-    origin: 'Miami',
-    destination: 'Seattle',
-    currentLocation: 'Seattle',
+    origin: 'Yaba',
+    destination: 'Ekiti',
+    currentLocation: 'Ondo',
     estimatedDelivery: '2025-02-22',
     priority: 'Normal'
   }
@@ -486,9 +486,9 @@ const Dashboard = () => {
   const generateMockShipment = useCallback(() => ({
     id: `SHP${Math.floor(Math.random() * 1000)}`,
     status: Math.random() > 0.5 ? 'In Transit' : 'Delivered',
-    origin: 'New York',
-    destination: 'Los Angeles',
-    currentLocation: 'Chicago',
+    origin: 'Lagos',
+    destination: 'Abuja',
+    currentLocation: 'Abeokuta',
     estimatedDelivery: '2025-02-24',
     priority: Math.random() > 0.7 ? 'High' : 'Normal'
   }), []);
@@ -656,8 +656,8 @@ const Dashboard = () => {
               <div
                 key={notif.id}
                 className={`p-3 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-100'} border-b hover:${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} cursor-pointer ${notif.read
-                    ? theme === 'dark' ? 'bg-gray-800' : 'bg-white'
-                    : theme === 'dark' ? 'bg-gray-700' : 'bg-blue-50'
+                  ? theme === 'dark' ? 'bg-gray-800' : 'bg-white'
+                  : theme === 'dark' ? 'bg-gray-700' : 'bg-blue-50'
                   }`}
                 onClick={() => markAsRead(notif.id)}
               >
